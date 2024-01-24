@@ -1,20 +1,27 @@
-import React from 'react';
+import React, { FC } from 'react';
 
 import { Box, Grid } from '@mui/material';
 import { Card, Wrapper } from 'components/GifsField/style';
+import { IGIf } from 'types';
 
-const GifsField = () => {
+interface IGifsFieldProps {
+    gifs: IGIf[];
+}
+const GifsField: FC<IGifsFieldProps> = ({ gifs = [] }) => {
     return (
         <Box sx={Wrapper}>
             <Grid container spacing={2}>
-                <Grid item md={4}>
-                    <Box sx={Card}>
-                        <img
-                            src="https://vgif.ru/gifs/166/vgif-ru-42236.webp"
-                            alt="gifka"
-                        />
-                    </Box>
-                </Grid>
+                {gifs.length &&
+                    gifs.map((gif) => (
+                        <Grid key={gif.id} item md={4}>
+                            <Box sx={Card}>
+                                <img
+                                    src={gif.images.downsized.url}
+                                    alt={gif.username}
+                                />
+                            </Box>
+                        </Grid>
+                    ))}
             </Grid>
         </Box>
     );
