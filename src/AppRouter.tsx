@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { routes } from './consts';
 import { AuthPage, MainPage } from './pages';
+import { ProtectedPage } from 'components';
 
 const AppRouter = () => {
     const router = createBrowserRouter([
@@ -12,7 +13,11 @@ const AppRouter = () => {
         },
         {
             path: routes.MAIN,
-            element: <MainPage />,
+            element: (
+                <ProtectedPage>
+                    <MainPage />
+                </ProtectedPage>
+            ),
         },
     ]);
 

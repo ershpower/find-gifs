@@ -1,11 +1,17 @@
 import React, { ChangeEvent, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import { Btn, Cred, Wrapper } from './style';
 import { Box, Button, Stack } from '@mui/material';
+import { AUTH_KEY, AUTH_USER, routes } from 'consts';
+import { useLocalStorage } from 'hooks';
 import { TextField } from 'ui-kit';
 const AuthPage = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
+    const navigate = useNavigate();
+
+    const { value, setValue } = useLocalStorage(AUTH_KEY);
 
     const handleChangeLogin = (e: ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
@@ -18,7 +24,13 @@ const AuthPage = () => {
     };
 
     const handleLogin = () => {
-        console.log(login, password);
+        const isAuth = JSON.stringify(value) === JSON.stringify(AUTH_USER);
+        if (!isAuth) return;
+        setValue({
+            login,
+            password,
+        });
+        navigate(routes.MAIN);
     };
 
     return (
