@@ -6,20 +6,23 @@ import { AuthPage, MainPage } from './pages';
 import { ProtectedPage } from 'components';
 
 const AppRouter = () => {
-    const router = createBrowserRouter([
-        {
-            path: routes.AUTH,
-            element: <AuthPage />,
-        },
-        {
-            path: routes.MAIN,
-            element: (
-                <ProtectedPage>
-                    <MainPage />
-                </ProtectedPage>
-            ),
-        },
-    ]);
+    const router = createBrowserRouter(
+        [
+            {
+                path: routes.AUTH,
+                element: <AuthPage />,
+            },
+            {
+                path: routes.MAIN,
+                element: (
+                    <ProtectedPage>
+                        <MainPage />
+                    </ProtectedPage>
+                ),
+            },
+        ],
+        { basename: '/find-gifs' }
+    );
 
     return <RouterProvider router={router} />;
 };
