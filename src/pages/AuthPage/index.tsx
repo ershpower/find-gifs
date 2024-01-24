@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from 'react';
 
 import { Btn, Cred, Wrapper } from './style';
 import { Box, Button, Stack } from '@mui/material';
-import { TextField } from 'ui-kit/index';
+import { TextField } from 'ui-kit';
 const AuthPage = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
