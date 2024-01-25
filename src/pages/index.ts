@@ -1,3 +1,5 @@
+import RandomPage from './RandomPage';
+import SearchPage from './SearchPage';
 import TrendsPage from './TrendsPage';
 
-export { TrendsPage };
+export { TrendsPage, SearchPage, RandomPage };

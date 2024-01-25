@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { routes } from './consts';
 import { TrendsPage } from './pages';
 import App from 'App';
+import { RandomPage, SearchPage } from 'pages';
 
 const AppRouter = () => {
     const router = createBrowserRouter(
@@ -15,6 +16,14 @@ const AppRouter = () => {
                     {
                         index: true,
                         element: <TrendsPage />,
+                    },
+                    {
+                        path: routes.SEARCH,
+                        element: <SearchPage />,
+                    },
+                    {
+                        path: routes.RANDOM,
+                        element: <RandomPage />,
                     },
                 ],
             },

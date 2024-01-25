@@ -20,7 +20,17 @@ export const gifApi = createApi({
                 currentCacheData.push(...responseData);
             },
         }),
+        getRandomGif: builder.query<IGIf, void>({
+            query: () => `/random?api_key=${GIPHY_KEY}`,
+            transformResponse: (response: { data: any }, meta, arg) =>
+                response.data,
+        }),
     }),
 });
 
-export const { useGetTrendsQuery, useLazyGetTrendsQuery } = gifApi;
+export const {
+    useGetTrendsQuery,
+    useLazyGetTrendsQuery,
+    useGetRandomGifQuery,
+    useLazyGetRandomGifQuery,
+} = gifApi;

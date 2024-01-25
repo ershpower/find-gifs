@@ -17,7 +17,7 @@ const WithObserver: FC<IWithObserverProps> = ({ callback, children }) => {
                     }
                 });
             },
-            { rootMargin: '60px' }
+            { rootMargin: '20px' }
         );
 
         if (ref.current) {
