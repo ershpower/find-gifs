@@ -1,15 +1,15 @@
 import React, { ChangeEvent, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 import { Btn, Cred, Wrapper } from './style';
 import { Box, Button, Stack } from '@mui/material';
 import { AUTH_KEY, AUTH_USER, routes } from 'consts';
 import { useLocalStorage } from 'hooks';
 import { TextField } from 'ui-kit';
+import { hashNavigate } from 'utils';
 const AuthPage = () => {
     const [login, setLogin] = useState('');
     const [password, setPassword] = useState('');
-    const navigate = useNavigate();
 
     const { value, setValue } = useLocalStorage(AUTH_KEY);
 
@@ -24,13 +24,15 @@ const AuthPage = () => {
     };
 
     const handleLogin = () => {
-        const isAuth = JSON.stringify(value) === JSON.stringify(AUTH_USER);
+        const isAuth =
+            JSON.stringify({ login, password }) === JSON.stringify(AUTH_USER);
         if (!isAuth) return;
         setValue({
             login,
             password,
         });
-        navigate(routes.MAIN);
+        const newUrl = window.location.href.split('/#auth')[0];
+        hashNavigate(newUrl);
     };
 
     return (

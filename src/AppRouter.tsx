@@ -1,11 +1,5 @@
 import React from 'react';
-import {
-    createBrowserRouter,
-    HashRouter,
-    Route,
-    RouterProvider,
-    Routes,
-} from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 
 import { routes } from './consts';
 import { AuthPage, MainPage } from './pages';
@@ -30,6 +24,7 @@ const AppRouter = () => {
     //     { basename: '/find-gifs' }
     // );
 
+    // Use browser route for production. Hash router only for gh-pages
     return (
         <HashRouter>
             <Routes>
