@@ -7,25 +7,24 @@ import { IGIf } from 'types';
 interface IGifsFieldProps {
     gifs: IGIf[];
 }
-const GifsField = forwardRef<Element, IGifsFieldProps>((props, ref) => {
+const GifsField = forwardRef<HTMLDivElement, IGifsFieldProps>((props, ref) => {
     const { gifs } = props;
 
     return (
         <Box sx={Wrapper}>
             <Grid container spacing={2}>
-                {gifs.length &&
-                    gifs.map((gif) => (
-                        <Grid key={gif.id} item md={4}>
-                            <Box sx={Card}>
-                                <img
-                                    src={gif.images.downsized.url}
-                                    alt={gif.username}
-                                />
-                            </Box>
-                        </Grid>
-                    ))}
+                {gifs.map((gif) => (
+                    <Grid key={gif.id} item md={4}>
+                        <Box sx={Card}>
+                            <img
+                                src={gif.images.downsized.url}
+                                alt={gif.username}
+                            />
+                        </Box>
+                    </Grid>
+                ))}
             </Grid>
-            {/*<div ref={ref}></div>*/}
+            <div ref={ref}></div>
         </Box>
     );
 });
