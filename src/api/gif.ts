@@ -10,6 +10,9 @@ export const gifApi = createApi({
             query: () => `/trending?api_key=${GIPHY_KEY}`,
             transformResponse: (response: { data: any }, meta, arg) =>
                 response.data,
+            merge: (currentCacheData, responseData, otherArgs) => {
+                currentCacheData.push(...responseData);
+            },
         }),
     }),
 });

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 
 import { Box, Grid } from '@mui/material';
 import { Card, Wrapper } from 'components/GifsField/style';
@@ -7,7 +7,9 @@ import { IGIf } from 'types';
 interface IGifsFieldProps {
     gifs: IGIf[];
 }
-const GifsField: FC<IGifsFieldProps> = ({ gifs = [] }) => {
+const GifsField = forwardRef<Element, IGifsFieldProps>((props, ref) => {
+    const { gifs } = props;
+
     return (
         <Box sx={Wrapper}>
             <Grid container spacing={2}>
@@ -23,8 +25,11 @@ const GifsField: FC<IGifsFieldProps> = ({ gifs = [] }) => {
                         </Grid>
                     ))}
             </Grid>
+            {/*<div ref={ref}></div>*/}
         </Box>
     );
-};
+});
+
+GifsField.displayName = 'GifsField';
 
 export default GifsField;
