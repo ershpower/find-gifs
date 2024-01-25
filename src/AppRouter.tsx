@@ -2,15 +2,21 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { routes } from './consts';
-import { MainPage } from './pages';
+import { TrendsPage } from './pages';
+import App from 'App';
 
 const AppRouter = () => {
     const router = createBrowserRouter(
         [
             {
-                index: true,
-                path: routes.MAIN,
-                element: <MainPage />,
+                path: '/',
+                element: <App />,
+                children: [
+                    {
+                        index: true,
+                        element: <TrendsPage />,
+                    },
+                ],
             },
         ],
         { basename: '/find-gifs' }

@@ -1,14 +1,33 @@
 import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 
-import AppRouter from './AppRouter';
 import { AnimatedBackground } from './components';
+import { Button, Stack } from '@mui/material';
+import { routes } from 'consts';
 
+const links = [
+    { title: 'Trends', path: routes.TRENDS },
+    { title: 'Search', path: routes.SEARCH },
+    { title: 'Random', path: routes.RANDOM },
+];
 function App() {
     return (
         <div className="App">
             <AnimatedBackground />
             <div className="main-content">
-                <AppRouter />
+                <Stack
+                    mb={2}
+                    direction={'row'}
+                    justifyContent={'center'}
+                    gap={'18px'}
+                >
+                    {links.map((link) => (
+                        <NavLink key={Math.random()} to={link.path}>
+                            <Button variant={'contained'}>{link.title}</Button>
+                        </NavLink>
+                    ))}
+                </Stack>
+                <Outlet />
             </div>
         </div>
     );

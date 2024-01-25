@@ -3,10 +3,12 @@ interface IRoute {
 }
 
 enum RouteKeys {
-    AUTH = 'AUTH',
-    MAIN = 'MAIN',
+    TRENDS = 'TRENDS',
+    SEARCH = 'SEARCH',
+    RANDOM = 'RANDOM',
 }
 export const routes: Record<RouteKeys, string> = {
-    [RouteKeys.AUTH]: '/auth',
-    [RouteKeys.MAIN]: '/',
+    [RouteKeys.TRENDS]: '/',
+    [RouteKeys.RANDOM]: 'random',
+    [RouteKeys.SEARCH]: 'search',
 };

@@ -11,4 +11,7 @@ body{
 .main-content{
   position: relative;
   z-index: 2;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding-top: 100px;
 }

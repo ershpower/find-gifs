@@ -1,3 +1,3 @@
-import MainPage from './MainPage';
+import TrendsPage from './TrendsPage';
 
-export { MainPage };
+export { TrendsPage };
