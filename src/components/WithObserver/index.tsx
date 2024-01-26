@@ -6,9 +6,8 @@ interface IWithObserverProps extends PropsWithChildren {
 }
 const WithObserver: FC<IWithObserverProps> = ({ callback, children }) => {
     const ref = useRef<HTMLDivElement | null>(null);
-    useEffect(() => {
-        callback();
 
+    useEffect(() => {
         const observer = new IntersectionObserver(
             (entries) => {
                 entries.forEach((item) => {
@@ -28,7 +27,7 @@ const WithObserver: FC<IWithObserverProps> = ({ callback, children }) => {
                 observer.unobserve(ref.current);
             }
         };
-    }, []);
+    }, [callback]);
 
     return (
         <div>

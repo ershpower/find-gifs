@@ -7,9 +7,7 @@ import { IGIf } from 'types';
 interface IGifsFieldProps {
     gifs: IGIf[];
 }
-const GifsField: FC<IGifsFieldProps> = (props) => {
-    const { gifs } = props;
-
+const GifsField: FC<IGifsFieldProps> = ({ gifs }) => {
     return (
         <Box sx={Wrapper}>
             <Grid container spacing={2}>
