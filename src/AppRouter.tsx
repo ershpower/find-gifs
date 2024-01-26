@@ -2,9 +2,14 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { routes } from './consts';
-import { TrendsPage } from './pages';
 import App from 'App';
-import { RandomPage, SearchPage } from 'pages';
+import {
+    RandomPage,
+    SearchPage,
+    TrendsDefault,
+    TrendsInfinity,
+    TrendsPage,
+} from 'pages';
 
 const AppRouter = () => {
     const router = createBrowserRouter(
@@ -14,8 +19,17 @@ const AppRouter = () => {
                 element: <App />,
                 children: [
                     {
-                        index: true,
                         element: <TrendsPage />,
+                        children: [
+                            {
+                                index: true,
+                                element: <TrendsDefault />,
+                            },
+                            {
+                                path: routes.TRENDS_INFINITY,
+                                element: <TrendsInfinity />,
+                            },
+                        ],
                     },
                     {
                         path: routes.SEARCH,

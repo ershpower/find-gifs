@@ -1,30 +1,20 @@
-import React, { useCallback, useState } from 'react';
+import React from 'react';
+import { NavLink, Outlet } from 'react-router-dom';
 
 import { Stack } from '@mui/material';
-import { skipToken } from '@reduxjs/toolkit/query';
-import { useGetTrendsQuery } from 'api';
-import { GifsField, WithObserver } from 'components';
+import { routes } from 'consts';
 
 const TrendsPage = () => {
-    const [offset, setOffset] = useState(0);
-
-    const { data: gifs = [] } = useGetTrendsQuery(
-        offset === 0 ? skipToken : offset,
-        {
-            refetchOnMountOrArgChange: true,
-        }
-    );
-
-    const handleGetGifs = useCallback(() => {
-        setOffset((prev) => prev + 9);
-    }, []);
-
     return (
-        <Stack>
-            <WithObserver callback={handleGetGifs}>
-                <GifsField gifs={gifs} />
-            </WithObserver>
-        </Stack>
+        <div>
+            <Stack direction={'row'} justifyContent={'center'} gap={'20px'}>
+                <NavLink to={routes.TRENDS}>Fetch</NavLink>
+                <NavLink to={routes.TRENDS_INFINITY}>
+                    RTK Query бесконечный скрол
+                </NavLink>
+            </Stack>
+            <Outlet />
+        </div>
     );
 };
 
