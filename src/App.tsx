@@ -20,6 +20,7 @@ function App() {
                     direction={'row'}
                     justifyContent={'center'}
                     gap={'18px'}
+                    flexWrap={'wrap'}
                 >
                     {links.map((link) => (
                         <NavLink key={Math.random()} to={link.path}>
