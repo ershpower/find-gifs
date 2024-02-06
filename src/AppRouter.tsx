@@ -2,9 +2,8 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import { routes } from './consts';
-import { TrendsPage } from './pages';
 import App from 'App';
-import { RandomPage, SearchPage } from 'pages';
+import { RandomPage, SearchPage, SettingsPage, TrendsPage } from 'pages';
 
 const AppRouter = () => {
     const router = createBrowserRouter(
@@ -24,6 +23,10 @@ const AppRouter = () => {
                     {
                         path: routes.RANDOM,
                         element: <RandomPage />,
+                    },
+                    {
+                        path: routes.SETTINGS,
+                        element: <SettingsPage />,
                     },
                 ],
             },

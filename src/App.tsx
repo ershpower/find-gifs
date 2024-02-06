@@ -26,6 +26,17 @@ function App() {
                             <Button variant={'contained'}>{link.title}</Button>
                         </NavLink>
                     ))}
+                    <NavLink to={routes.SETTINGS}>
+                        <Button
+                            sx={{
+                                background: '#cfcfcf',
+                                '&:hover': { background: '#2caecb' },
+                            }}
+                            variant={'outlined'}
+                        >
+                            Settings
+                        </Button>
+                    </NavLink>
                 </Stack>
                 <Outlet />
             </div>
